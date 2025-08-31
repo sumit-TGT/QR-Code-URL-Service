@@ -1,0 +1,67 @@
+{
+  "info": {
+    "name": "QR URL Service",
+    "_postman_id": "qr-url-service-12345",
+    "description": "Postman Collection for QR URL Service (generate QR, redirect, stats).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Generate QR Link",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"receiptId\": \"12345\",\n  \"expiresIn\": \"1h\",\n  \"format\": \"png\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:4000/generate",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["generate"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Redirect via Token",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/r/{{token}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["r", "{{token}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Link Stats",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/stats/{{token}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["stats", "{{token}}"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "token",
+      "value": "your-token-here"
+    }
+  ]
+}
